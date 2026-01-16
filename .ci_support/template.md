@@ -4,7 +4,7 @@
 
 | Username    | Attributed Github Stars | Github Hirsch Index |
 |-------------|------------------------:|------------------------:|
-| {{ username }} | {{ githubattributedstars }} :star: | {{ githubhirsch }} :zap: |
+| [{{ username }}](https://github.com/{{ username }}) | {{ githubattributedstars }} :star: | {{ githubhirsch }} :zap: |
 
 ## Repositories 
 

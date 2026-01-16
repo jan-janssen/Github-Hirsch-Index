@@ -1,10 +1,10 @@
 # Github Hirsch Index
 
-[![Deploy](https://github.com/jan-janssen/Github-Hirschfeld-Index/workflows/Deploy/badge.svg)](https://github.com/jan-janssen/Github-Hirschfeld-Index/actions)
+[![Deploy](https://github.com/jan-janssen/Github-Hirsch-Index/workflows/Deploy/badge.svg)](https://github.com/jan-janssen/Github-Hirsch-Index/actions)
 
 | Username    | Attributed Github Stars | Github Hirsch Index |
 |-------------|------------------------:|------------------------:|
-| jan-janssen | 560 :star: | 10 :zap: |
+| [jan-janssen](https://github.com/jan-janssen) | 560 :star: | 10 :zap: |
 
 ## Repositories 
 

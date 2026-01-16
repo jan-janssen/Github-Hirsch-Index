@@ -1,8 +1,10 @@
 # Github Hirsch Index
 
+[![Deploy](https://github.com/jan-janssen/Github-Hirschfeld-Index/workflows/Deploy/badge.svg)](https://github.com/jan-janssen/Github-Hirschfeld-Index/actions)
+
 | Username    | Attributed Github Stars | Github Hirsch Index |
-|-------------|------------------------:|--------------------:|
-| jan-janssen |              560 :star: |            10 :zap: |
+|-------------|------------------------:|------------------------:|
+| jan-janssen | 560 :star: | 10 :zap: |
 
 ## Repositories 
 
@@ -40,6 +42,7 @@
 | [pyiron-dev/remote-executor](https://github.com/pyiron-dev/remote-executor) | 1 :star: | ![GitHub Repo stars](https://img.shields.io/github/stars/pyiron-dev/remote-executor) |
 | [pyiron-workshop/lanl-tutorial-2025](https://github.com/pyiron-workshop/lanl-tutorial-2025) | 1 :star: | ![GitHub Repo stars](https://img.shields.io/github/stars/pyiron-workshop/lanl-tutorial-2025) |
 | [jan-janssen/birmingham](https://github.com/jan-janssen/birmingham) | 1 :star: | ![GitHub Repo stars](https://img.shields.io/github/stars/jan-janssen/birmingham) |
+
 
 ## Fork this Repository
 

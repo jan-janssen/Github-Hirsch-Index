@@ -11,7 +11,7 @@
 | Repository | Attributed Github Stars | Total Github Stars |
 |------------|------------------------:|-------------------:|
 {% for package in package_lst -%}
-{% if package[1] >= githubhirsch %}
+{% if package[1] >= githubhirsch -%}
 | [**{{ package[0] }}**](https://github.com/{{ package[0] }}) | {{ package[1] }} :star: | ![GitHub Repo stars](https://img.shields.io/github/stars/{{ package[0] }}) |
 {% else %}
 | [{{ package[0] }}](https://github.com/{{ package[0] }}) | {{ package[1] }} :star: | ![GitHub Repo stars](https://img.shields.io/github/stars/{{ package[0] }}) |

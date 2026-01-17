@@ -74,56 +74,90 @@ def get_user_id(username, token):
     t = Template(query_user)
     query = t.render(githubuser=username)
     request = requests.post(
-        'https://api.github.com/graphql', 
-        json={'query': query}, 
-        headers={"Authorization": f"Bearer {token}", "Accept": "application/vnd.github+json", "User-Agent": "github-org-contribs-gql"},
+        "https://api.github.com/graphql",
+        json={"query": query},
+        headers={
+            "Authorization": f"Bearer {token}",
+            "Accept": "application/vnd.github+json",
+            "User-Agent": "github-org-contribs-gql",
+        },
     )
     if request.status_code == 200:
         result_dict = request.json()
     else:
-        raise Exception("Query failed to run by returning code of {}. {}".format(request.status_code, query))
+        raise Exception(
+            "Query failed to run by returning code of {}. {}".format(
+                request.status_code, query
+            )
+        )
     return result_dict["data"]["user"]["id"]
 
 
 def get_packages(user_name, user_id, token):
     t = Template(query_packages)
-    after = None 
-    next_page = True 
+    after = None
+    next_page = True
     packages_lst = []
     total_list_of_repos = None
     nodes_sum = 0
     while next_page:
         query = t.render(user=user_name, userid=user_id, after=after)
         request = requests.post(
-            'https://api.github.com/graphql', 
-            json={"query": query}, 
-            headers={"Authorization": f"Bearer {token}", "Accept": "application/vnd.github+json", "User-Agent": "github-org-contribs-gql"},
+            "https://api.github.com/graphql",
+            json={"query": query},
+            headers={
+                "Authorization": f"Bearer {token}",
+                "Accept": "application/vnd.github+json",
+                "User-Agent": "github-org-contribs-gql",
+            },
         )
         if request.status_code == 200:
             result_dict = request.json()
         else:
-            raise Exception("Query failed to run by returning code of {}. {}".format(request.status_code, query))
-        next_page = result_dict["data"]["user"]['repositoriesContributedTo']['pageInfo']['hasNextPage']
-        after = result_dict["data"]["user"]['repositoriesContributedTo']['pageInfo']['endCursor']
+            raise Exception(
+                "Query failed to run by returning code of {}. {}".format(
+                    request.status_code, query
+                )
+            )
+        next_page = result_dict["data"]["user"]["repositoriesContributedTo"][
+            "pageInfo"
+        ]["hasNextPage"]
+        after = result_dict["data"]["user"]["repositoriesContributedTo"]["pageInfo"][
+            "endCursor"
+        ]
         if total_list_of_repos is None:
-            total_list_of_repos = result_dict["data"]["user"]['repositoriesContributedTo']['totalCount']
-        nodes_lst = result_dict["data"]["user"]['repositoriesContributedTo']["nodes"]
+            total_list_of_repos = result_dict["data"]["user"][
+                "repositoriesContributedTo"
+            ]["totalCount"]
+        nodes_lst = result_dict["data"]["user"]["repositoriesContributedTo"]["nodes"]
         nodes_sum += len(nodes_lst)
         for repo in nodes_lst:
             stars = repo["stargazerCount"]
             if stars > 0:
-                user_commits = repo['defaultBranchRef']['target']['authorCommits']['totalCount']
-                total_commit = repo['defaultBranchRef']['target']['history']['totalCount'] 
+                user_commits = repo["defaultBranchRef"]["target"]["authorCommits"][
+                    "totalCount"
+                ]
+                total_commit = repo["defaultBranchRef"]["target"]["history"][
+                    "totalCount"
+                ]
                 packages_lst.append(
                     RepoAttribution(
                         repo_full_name=repo["nameWithOwner"],
                         repo_stars=stars,
                         user_commits=user_commits,
                         total_commits=total_commit,
-                        attributed_stars=stars * user_commits/ total_commit,
+                        attributed_stars=stars * user_commits / total_commit,
                     )
                 )
-        print("Downloading: " + str(nodes_sum) + " / " + str(total_list_of_repos) + " found " + str(len(packages_lst)) + " repositories with Github stars")
+        print(
+            "Downloading: "
+            + str(nodes_sum)
+            + " / "
+            + str(total_list_of_repos)
+            + " found "
+            + str(len(packages_lst))
+            + " repositories with Github stars"
+        )
     return packages_lst, total_list_of_repos
 
 
@@ -144,13 +178,19 @@ def github_hirschfeld_index(attributed_stars_per_repo: Iterable[float]) -> int:
 
 def get_github_hirschfeld_index(username, token):
     user_id = get_user_id(username=username, token=token)
-    packages_lst, total_list_of_repos = get_packages(user_name=username, user_id=user_id, token=token)
-    per_repo_sorted = sorted(packages_lst, key=lambda r: r.attributed_stars, reverse=True)
+    packages_lst, total_list_of_repos = get_packages(
+        user_name=username, user_id=user_id, token=token
+    )
+    per_repo_sorted = sorted(
+        packages_lst, key=lambda r: r.attributed_stars, reverse=True
+    )
     return {
         "username": username,
         "repo_count": sum([r.attributed_stars for r in packages_lst]),
         "total_attributed_stars": total_list_of_repos,
-        "github_hirschfeld_index": github_hirschfeld_index([r.attributed_stars for r in packages_lst]),
+        "github_hirschfeld_index": github_hirschfeld_index(
+            [r.attributed_stars for r in packages_lst]
+        ),
         "per_repo": {r.repo_full_name: r.attributed_stars for r in per_repo_sorted},
     }
 
@@ -174,7 +214,9 @@ def command_line(argv):
     repository = None
     try:
         opts, args = getopt.getopt(
-            argv[1:], "u:t:g:r:h", ["username=", "token=", "template=", "repository=", "help"]
+            argv[1:],
+            "u:t:g:r:h",
+            ["username=", "token=", "template=", "repository=", "help"],
         )
     except getopt.GetoptError:
         print("run.py -u <username> -t <token> -g <template> -r <repository>")
@@ -188,21 +230,21 @@ def command_line(argv):
         elif opt in ("-t", "--token"):
             token = arg
         elif opt in ("-g", "--template"):
-            template = arg 
+            template = arg
         elif opt in ("-r", "--repository"):
-            repository = arg 
+            repository = arg
     return username, token, template, repository
 
 
 if __name__ == "__main__":
     username, token, template, repository = command_line(argv=sys.argv)
     statistics = get_github_hirschfeld_index(
-        username=username, 
+        username=username,
         token=token,
     )
 
     package_lst = []
-    for k,v in statistics["per_repo"].items():
+    for k, v in statistics["per_repo"].items():
         if int(v) >= 1:
             package_lst.append((k, int(v)))
 
@@ -211,9 +253,9 @@ if __name__ == "__main__":
 
     t = Template(template_content)
     result = t.render(
-        username=statistics['username'],
-        githubattributedstars=int(statistics['total_attributed_stars']),
-        githubhirsch=int(statistics['github_hirschfeld_index']),
+        username=statistics["username"],
+        githubattributedstars=int(statistics["total_attributed_stars"]),
+        githubhirsch=int(statistics["github_hirschfeld_index"]),
         package_lst=package_lst,
         repository=repository,
     )

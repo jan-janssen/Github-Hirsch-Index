@@ -1,6 +1,6 @@
-# Github Hirsch Index
+# My Github Hirsch Index
 
-[![Deploy](https://github.com/jan-janssen/Github-Hirsch-Index/workflows/Deploy/badge.svg)](https://github.com/jan-janssen/Github-Hirsch-Index/actions)
+[![Deploy](https://github.com/jan-janssen/My-Github-Hirsch-Index/workflows/Deploy/badge.svg)](https://github.com/jan-janssen/My-Github-Hirsch-Index/actions)
 
 | Username    | Attributed Github Stars | Github Hirsch Index |
 |-------------|------------------------:|------------------------:|
@@ -44,9 +44,9 @@
 | [jan-janssen/birmingham](https://github.com/jan-janssen/birmingham) | 1 :star: | ![GitHub Repo stars](https://img.shields.io/github/stars/jan-janssen/birmingham) |
 
 
-## Fork this Repository
+## Calculate your Github Hirsch Index
 
-To calculate your own Github Hirsch Index , simply fork this repository and set the environment variable `GH_TOKEN` as a [github action secret](https://docs.github.com/en/actions/reference/encrypted-secrets#creating-encrypted-secrets-for-a-repository):
+To calculate your Github Hirsch Index, simply fork this repository and set the environment variable `GH_TOKEN` as a [github action secret](https://docs.github.com/en/actions/reference/encrypted-secrets#creating-encrypted-secrets-for-a-repository):
 
 ```
 GH_TOKEN = <your Github token which enables access to public_repo and read:org>
@@ -57,4 +57,4 @@ For the token the following permissions are required:
 
 After creating the environment variable `GH_TOKEN` trigger a new build on the master branch. 
 
-If you have just forked the repo, you will likely need to enable `Actions` for your fork by going to the `Actions` tab in the github UI. 
+If you have just forked the repo, you need to enable Github Actions for your fork by going to the `Actions` tab in the repository settings as well as allowing the Github Action to push to your fork to upload your newly calculated Github Hirsch Index.

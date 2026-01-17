@@ -13,9 +13,9 @@
 {% for package in package_lst -%}
 {% if package[1] >= githubhirsch -%}
 | [**{{ package[0] }}**](https://github.com/{{ package[0] }}) | {{ package[1] }} :star: | ![GitHub Repo stars](https://img.shields.io/github/stars/{{ package[0] }}) |
-{% else %}
+{%- else -%}
 | [{{ package[0] }}](https://github.com/{{ package[0] }}) | {{ package[1] }} :star: | ![GitHub Repo stars](https://img.shields.io/github/stars/{{ package[0] }}) |
-{% endif %}
+{%- endif %}
 {% endfor %}
 
 ## Calculate your Github Hirsch Index

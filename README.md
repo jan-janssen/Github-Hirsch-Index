@@ -4,7 +4,7 @@
 
 | Username    | Attributed Github Stars | Github Hirsch Index |
 |-------------|------------------------:|------------------------:|
-| [jan-janssen](https://github.com/jan-janssen) | 554 :star: | 10 :zap: |
+| [jan-janssen](https://github.com/jan-janssen) | 541 :star: | 10 :zap: |
 
 ## Repositories 
 
@@ -39,7 +39,6 @@
 | [pyiron/pyiron_contrib](https://github.com/pyiron/pyiron_contrib) | 1 :star: | ![GitHub Repo stars](https://img.shields.io/github/stars/pyiron/pyiron_contrib) |
 | [jan-janssen/pymov2gif](https://github.com/jan-janssen/pymov2gif) | 1 :star: | ![GitHub Repo stars](https://img.shields.io/github/stars/jan-janssen/pymov2gif) |
 | [jan-janssen/jan-janssen](https://github.com/jan-janssen/jan-janssen) | 1 :star: | ![GitHub Repo stars](https://img.shields.io/github/stars/jan-janssen/jan-janssen) |
-| [pyiron-dev/remote-executor](https://github.com/pyiron-dev/remote-executor) | 1 :star: | ![GitHub Repo stars](https://img.shields.io/github/stars/pyiron-dev/remote-executor) |
 | [pyiron-workshop/lanl-tutorial-2025](https://github.com/pyiron-workshop/lanl-tutorial-2025) | 1 :star: | ![GitHub Repo stars](https://img.shields.io/github/stars/pyiron-workshop/lanl-tutorial-2025) |
 | [jan-janssen/birmingham](https://github.com/jan-janssen/birmingham) | 1 :star: | ![GitHub Repo stars](https://img.shields.io/github/stars/jan-janssen/birmingham) |
 

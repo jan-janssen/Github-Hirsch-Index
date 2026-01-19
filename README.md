@@ -11,7 +11,7 @@
 | Repository | Attributed Github Stars | Total Github Stars |
 |------------|------------------------:|-------------------:|
 | [**pyiron/pyiron**](https://github.com/pyiron/pyiron) | 232 :star: | ![GitHub Repo stars](https://img.shields.io/github/stars/pyiron/pyiron) |
-| [**jan-janssen/LangSim**](https://github.com/jan-janssen/LangSim) | 59 :star: | ![GitHub Repo stars](https://img.shields.io/github/stars/jan-janssen/LangSim) |
+| [**jan-janssen/LangSim**](https://github.com/jan-janssen/LangSim) | 60 :star: | ![GitHub Repo stars](https://img.shields.io/github/stars/jan-janssen/LangSim) |
 | [**pyiron/executorlib**](https://github.com/pyiron/executorlib) | 58 :star: | ![GitHub Repo stars](https://img.shields.io/github/stars/pyiron/executorlib) |
 | [**pyiron/pylammpsmpi**](https://github.com/pyiron/pylammpsmpi) | 23 :star: | ![GitHub Repo stars](https://img.shields.io/github/stars/pyiron/pylammpsmpi) |
 | [**pyiron/pysqa**](https://github.com/pyiron/pysqa) | 22 :star: | ![GitHub Repo stars](https://img.shields.io/github/stars/pyiron/pysqa) |
@@ -45,15 +45,6 @@
 
 ## Calculate your Github Hirsch Index
 
-To calculate your Github Hirsch Index, simply fork this repository and set the environment variable `GH_TOKEN` as a [github action secret](https://docs.github.com/en/actions/reference/encrypted-secrets#creating-encrypted-secrets-for-a-repository):
-
-```
-GH_TOKEN = <your Github token which enables access to public_repo and read:org>
-```
-
-For the token the following permissions are required:
-![Required Permissions](permissions.png)
-
-After creating the environment variable `GH_TOKEN` trigger a new build on the master branch. 
-
-If you have just forked the repo, you need to enable Github Actions for your fork by going to the `Actions` tab in the repository settings as well as allowing the Github Action to push to your fork to upload your newly calculated Github Hirsch Index.
+* [Fork this repository](https://github.com/jan-janssen/My-Github-Hirsch-Index/fork).
+* Go to the repository `Settings` on the page for `Actions` at the top under `Actions permissions` set `Allow all actions and reusable workflows` to enable the Github actions for this repository.
+* Finally, under `Settings` on the page for `Actions` at the bottom also set the `Workflow permissions` to `Read and write permissions` to enable uploading the calculated Github Hirsch Index.
